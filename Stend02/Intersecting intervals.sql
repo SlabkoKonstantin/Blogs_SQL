@@ -29,3 +29,14 @@ SELECT a.id          a_id
  WHERE 
   (a.d_start <= d.d_end AND a.d_end >= d.d_start) -- в 2-х таблицах находим пересекающиеся интервалы    
   and a.id != d.id -- убираем пересечения интервала с самим собой
+
+      A_ID A_DESCR         A_START  A_END            ID D_DESCR         D_START  D_END
+---------- --------------- -------- -------- ---------- --------------- -------- --------
+         2 Interval D      04.02.18 10.02.18          1 Interval A      02.02.18 05.02.18
+         1 Interval A      02.02.18 05.02.18          2 Interval D      04.02.18 10.02.18
+         3 Interval C      09.02.18 12.02.18          2 Interval D      04.02.18 10.02.18
+         2 Interval D      04.02.18 10.02.18          3 Interval C      09.02.18 12.02.18
+         6 Interval F      20.02.18 25.02.18          5 Interval E      19.02.18 27.02.18
+         5 Interval E      19.02.18 27.02.18          6 Interval F      20.02.18 25.02.18
+
+6 строк выбрано.
