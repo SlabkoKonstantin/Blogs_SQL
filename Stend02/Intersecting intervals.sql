@@ -27,7 +27,7 @@ SELECT a.id          a_id
       ,d.d_end d_end            
   FROM table1 a, table1 d   
  WHERE 
-  (a.d_start <= d.d_end AND a.d_end >= d.d_start) -- в 2-х таблицах находим пересекающиеся интервалы    
+  (a.d_start <= d.d_end AND a.d_end >= d.d_start) -- соединяем таблицу с ней же и находим пересекающиеся интервалы    
   and a.id != d.id -- убираем пересечения интервала с самим собой
 
       A_ID A_DESCR         A_START  A_END            ID D_DESCR         D_START  D_END
