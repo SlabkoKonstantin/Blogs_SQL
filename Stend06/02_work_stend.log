@@ -1,0 +1,118 @@
+
+d:\DOCS\_Blog\Статьи\04_Удаление внешнего соединения таблиц\Work>set NLS_LANG=RUSSIAN_CIS.RU8PC866 
+
+d:\DOCS\_Blog\Статьи\04_Удаление внешнего соединения таблиц\Work>set ORACLE_HOME=D:\app\SirKot\product\11.2.0\dbhome_1 
+
+d:\DOCS\_Blog\Статьи\04_Удаление внешнего соединения таблиц\Work>set ORACLE_SID=ORCLSID 
+
+d:\DOCS\_Blog\Статьи\04_Удаление внешнего соединения таблиц\Work>D:\app\SirKot\product\11.2.0\dbhome_1\BIN\sqlplus.exe rf/rf @02_work_stend.sql 
+
+SQL*Plus: Release 11.2.0.1.0 Production on Сб Сен 14 17:21:31 2019
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+
+Присоединен к:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production
+With the Partitioning, OLAP and Data Mining options
+
+
+Система изменена.
+
+
+Система изменена.
+
+
+55675 строк выбрано.
+
+Затрач.время: 00:00:06.92
+
+План выполнения
+----------------------------------------------------------
+Plan hash value: 773729729
+
+---------------------------------------------------------------------------------------------------
+| Id  | Operation		| Name		  | Rows  | Bytes |TempSpc| Cost (%CPU)| Time	  |
+---------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT	|		  |    37M|  2133M|	  |  1086K  (1)| 03:37:24 |
+|   1 |  SORT ORDER BY		|		  |    37M|  2133M|  2468M|  1086K  (1)| 03:37:24 |
+|   2 |   HASH UNIQUE		|		  |    37M|  2133M|  2468M|   547K  (1)| 01:49:32 |
+|*  3 |    HASH JOIN RIGHT OUTER|		  |    37M|  2133M|	  |  8382   (3)| 00:01:41 |
+|   4 |     VIEW		| VW_DTP_048A2FC6 |   681 | 11577 |	  |    54   (6)| 00:00:01 |
+|   5 |      HASH UNIQUE	|		  |   681 | 11577 |	  |    54   (6)| 00:00:01 |
+|   6 |       TABLE ACCESS FULL | T_USERS	  | 50653 |   840K|	  |    52   (2)| 00:00:01 |
+|   7 |     TABLE ACCESS FULL	| T_OBJECTS	  |  2059K|    82M|	  |  8139   (1)| 00:01:38 |
+---------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   3 - access("O"."OWNER"="ITEM_1"(+))
+
+
+Статистика
+----------------------------------------------------------
+	677  recursive calls
+	  0  db block gets
+      30010  consistent gets
+      29879  physical reads
+	  0  redo size
+    2199139  bytes sent via SQL*Net to client
+      41240  bytes received via SQL*Net from client
+       3713  SQL*Net roundtrips to/from client
+	 13  sorts (memory)
+	  0  sorts (disk)
+      55675  rows processed
+
+
+Система изменена.
+
+Затрач.время: 00:00:00.04
+
+Система изменена.
+
+Затрач.время: 00:00:02.13
+
+55675 строк выбрано.
+
+Затрач.время: 00:00:07.32
+
+План выполнения
+----------------------------------------------------------
+Plan hash value: 2253506287
+
+-----------------------------------------------------------------------------------------
+| Id  | Operation	    | Name	| Rows	| Bytes |TempSpc| Cost (%CPU)| Time	|
+-----------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT    |		|  2059K|    82M|	| 52697   (1)| 00:10:33 |
+|   1 |  HASH UNIQUE	    |		|    26 |   442 |	|    53   (4)| 00:00:01 |
+|*  2 |   TABLE ACCESS FULL | T_USERS	|  1369 | 23273 |	|    52   (2)| 00:00:01 |
+|   3 |  SORT ORDER BY	    |		|  2059K|    82M|   102M| 52697   (1)| 00:10:33 |
+|   4 |   HASH UNIQUE	    |		|  2059K|    82M|   102M| 30418   (1)| 00:06:06 |
+|   5 |    TABLE ACCESS FULL| T_OBJECTS |  2059K|    82M|	|  8139   (1)| 00:01:38 |
+-----------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter("U"."USERNAME"=:B1)
+
+
+Статистика
+----------------------------------------------------------
+	677  recursive calls
+	  0  db block gets
+      32635  consistent gets
+      29879  physical reads
+	  0  redo size
+    2199139  bytes sent via SQL*Net to client
+      41240  bytes received via SQL*Net from client
+       3713  SQL*Net roundtrips to/from client
+	 13  sorts (memory)
+	  0  sorts (disk)
+      55675  rows processed
+
+Отсоединено от Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production
+With the Partitioning, OLAP and Data Mining options
+
+d:\DOCS\_Blog\Статьи\04_Удаление внешнего соединения таблиц\Work>rem
